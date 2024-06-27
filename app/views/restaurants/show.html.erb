@@ -1,0 +1,22 @@
+<h2><%= @restaurant.name %></h2>
+<div class="d-flex flex-column bg-light py-3 my-4 border rounded">
+  <strong>Address:</strong> <%= @restaurant.address %>
+  <hr>
+  <strong>Category:</strong> <%= @restaurant.category %>
+  <hr>
+  <strong>Phone number:</strong> <%= @restaurant.phone_number ? @restaurant.phone_number : 'No phone number added' %>
+</div>
+<hr>
+<div class="d-flex flex-column py-3 my-4">
+  <% if @reviews.length != 0 %>
+    <% @reviews.each do |review| %>
+      <%= @review.rating * '<i class="fa-solid fa-star"></i>' %>
+      <strong>Content:</strong><%= review.content %>
+    <% end %>
+  <% else %>
+    <p>No reviews added</p>
+  <% end %>
+</div>
+<hr>
+<p><%= link_to("Edit restaurant", edit_restaurant_path(@restaurant) ) %></p>
+<p><%= link_to("Back to list", restaurants_path) %></p>

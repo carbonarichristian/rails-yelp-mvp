@@ -6,6 +6,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+    @reviews = Review.where(restaurant_id: params[:id])
   end
 
   def new
@@ -13,11 +14,17 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.create(restaurant_params)
-    redirect_to restaurant_path(@restaurant)
+    @restaurant = Restaurant.new(restaurant_params)
+    if @restaurant
+      @restaurant.save
+      redirect_to restaurants_path(@restaurant)
+    else
+      redirect_to new_path
+    end
   end
 
   def edit
+    @review = Review.new
   end
 
   def update
