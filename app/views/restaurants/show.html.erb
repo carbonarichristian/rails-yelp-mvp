@@ -8,9 +8,9 @@
 </div>
 <hr>
 <div class="d-flex flex-column py-3 my-4">
-  <% if @reviews.length != 0 %>
-    <% @reviews.each do |review| %>
-      <%= @review.rating * '<i class="fa-solid fa-star"></i>' %>
+  <% if @restaurant.reviews.length != 0 %>
+    <% @restaurant.reviews.each do |review| %>
+      <%= review.rating %>
       <strong>Content:</strong><%= review.content %>
     <% end %>
   <% else %>

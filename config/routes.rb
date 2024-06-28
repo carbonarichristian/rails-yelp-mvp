@@ -7,12 +7,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :restaurants, except: [:destroy, :create] do
-    member do
-      resources :reviews, except: [:create]
-    end
-    resources :reviews, only: [:create], as: 'review'
+  resources :restaurants do
+    resources :reviews, only: [:create]
   end
-  resources :restaurants, only: [:destroy], as: 'delete_restaurant'
-  resources :restaurants, only: [:create], as: 'create_restaurant'
+  resources :reviews, only: [:destroy]
 end

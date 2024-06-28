@@ -6,7 +6,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @reviews = Review.where(restaurant_id: params[:id])
+    @reviews = Review.new
   end
 
   def new
@@ -15,11 +15,10 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    if @restaurant
-      @restaurant.save
-      redirect_to restaurants_path(@restaurant)
+    if @restaurant.save
+      redirect_to @restaurant, notice: "Garden was successfully created."
     else
-      redirect_to new_path
+      render :new, status: :unprocessable_entity
     end
   end
 

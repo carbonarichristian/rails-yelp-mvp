@@ -2,7 +2,7 @@
 <ul>
   <% @restaurants.each do |restaurant|%>
     <li>
-      <%= link_to restaurant.name, restaurant_path(restaurant) %> <%= link_to("delete", delete_restaurant_path(restaurant), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) %>
+      <%= link_to restaurant.name, restaurant_path(restaurant) %> <%= link_to("delete", restaurant_path(restaurant), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}) %>
     </li>
   <% end %>
 </ul>
